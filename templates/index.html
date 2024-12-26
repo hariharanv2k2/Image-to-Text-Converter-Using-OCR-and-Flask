@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OCR Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #5cb85c;
+        }
+
+        .container-fluid {
+            max-width: 800px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        #uploadedImage {
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background-color: #fff;
+            max-width: 100%;
+        }
+
+        .btn-success {
+            margin-top: 20px;
+        }
+
+        .file-upload {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid text-center">
+        <h2>OCR Application using Flask</h2>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form class="form-horizontal" action="/submitImage/" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="ocrImage" class="col-sm-3 control-label">Choose Image:</label>
+                        <div class="col-sm-6 file-upload">
+                            <input type="file" name="ocrImage" id="ocrImage" class="form-control" onchange="showImage(event)">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <img src="" id="uploadedImage" alt="No image selected" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <input type="submit" class="btn btn-success btn-block" value="Convert">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function showImage(event) {
+            const uploadedImage = document.getElementById('ocrImage').files[0];
+            document.getElementById('uploadedImage').src = URL.createObjectURL(uploadedImage);
+        }
+    </script>
+</body>
+</html>

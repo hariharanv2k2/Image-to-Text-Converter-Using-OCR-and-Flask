@@ -1,0 +1,56 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Result | OCR Application</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .container-fluid {
+            margin-top: 50px;
+        }
+        textarea {
+            width: 100%;
+            resize: none;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f1f1f1;
+        }
+        .btn-info {
+            margin-top: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h2>OCR Application Result</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <textarea id="textValue" readonly name="result" rows="10">{{ text }}</textarea>
+                <button type="button" class="btn btn-info" onclick="downloadText()">Download Text</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function downloadText() {
+            var text = document.getElementById('textValue').value;
+            var blob = new Blob([text], { type: "text/plain" });
+            var link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = "ocr_result.txt";
+            link.click();
+        }
+    </script>
+</body>
+</html>

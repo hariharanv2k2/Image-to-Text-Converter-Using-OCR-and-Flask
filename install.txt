@@ -1,0 +1,2 @@
+install tesseract exe file then
+set environment variable to the correct location C:\Program Files\Tesseract-OCR
